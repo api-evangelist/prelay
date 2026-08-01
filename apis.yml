@@ -1,7 +1,26 @@
 aid: prelay
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/prelay.png
 name: Prelay
-description: Prelay is a company surfaced as a portfolio company of general-catalyst and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Prelay is a deal collaboration ("team selling") platform that helps B2B revenue
+  teams coordinate the internal stakeholders behind complex enterprise deals —
+  sales engineers, legal, deal desk, finance, and leadership — inside a shared
+  workspace that plugs into the CRM. It is a SaaS application aimed at sales and
+  revenue operations, not a developer/API product: as of this enrichment pass no
+  public developer portal, API reference, OpenAPI/AsyncAPI specification, SDKs, or
+  developer subdomains (api./developers./docs.) were found. Prelay was surfaced as
+  a portfolio company of General Catalyst and added to the API Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/prelay/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +30,25 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Sales
+- Revenue Operations
+- Deal Collaboration
+- Team Selling
+- SaaS
+common:
+- type: Website
+  url: https://www.prelay.com
 apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 0
+  pass: local-v1
