@@ -13,13 +13,19 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/prelay.png
 name: Prelay
 description: >-
-  Prelay is a deal collaboration ("team selling") platform that helps B2B revenue
+  Prelay was a deal collaboration ("team selling") platform that helped B2B revenue
   teams coordinate the internal stakeholders behind complex enterprise deals —
   sales engineers, legal, deal desk, finance, and leadership — inside a shared
-  workspace that plugs into the CRM. It is a SaaS application aimed at sales and
-  revenue operations, not a developer/API product: as of this enrichment pass no
-  public developer portal, API reference, OpenAPI/AsyncAPI specification, SDKs, or
-  developer subdomains (api./developers./docs.) were found. Prelay was surfaced as
+  workspace that plugged into the CRM. Founded 2019 in San Francisco (Y Combinator
+  W20), it was a SaaS application aimed at sales and revenue operations, not a
+  developer/API product. The company has since ceased operations: Y Combinator
+  lists Prelay as Inactive, Crunchbase records it as permanently closed, the
+  github.com/prelay organization was archived on 2025-10-16 with zero public
+  repositories, and as of 2026-08-14 prelay.com and www.prelay.com no longer
+  complete a TLS handshake (the Webflow certificate has been deprovisioned) while
+  app.prelay.com answers 404 for every path. No public developer portal, API
+  reference, OpenAPI/AsyncAPI specification, SDK, MCP server or agent card ever
+  existed, and no api./docs./developers. subdomain resolves. Prelay was surfaced as
   a portfolio company of General Catalyst and added to the API Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/prelay/refs/heads/main/apis.yml
 x-type: company
@@ -30,7 +36,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-14'
 tags:
 - Company
 - Sales
@@ -39,6 +45,8 @@ tags:
 - Team Selling
 - SaaS
 common:
+- type: DomainSecurity
+  url: security/prelay-domain-security.yml
 - type: Website
   url: https://www.prelay.com
 apis: []
@@ -48,7 +56,32 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-14'
   status: minimal
-  artifacts_added: 0
+  artifacts_added: 2
   pass: local-v1
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    Prelay has shut down — Y Combinator lists the W20 company as Inactive and
+    Crunchbase records it as permanently closed — and the shutdown is visible in
+    the infrastructure: prelay.com and www.prelay.com still point at the Webflow
+    edge but the TLS certificate has been deprovisioned so no HTTPS request
+    completes a handshake, app.prelay.com answers Google's "Page not found" 404 for
+    every path, and the github.com/prelay organization was archived on 2025-10-16
+    holding zero public repositories.
+  evidence:
+  - url: https://www.prelay.com/
+    status: 0
+  - url: https://prelay.com/.well-known/agent-card.json
+    status: 0
+  - url: https://app.prelay.com/openapi.json
+    status: 404
+  - url: https://help.prelay.com/llms.txt
+    status: 403
+  - url: https://api.github.com/orgs/prelay
+    status: 200
+  - url: https://www.ycombinator.com/companies/prelay
+    status: 200
+  checked: '2026-08-14'
