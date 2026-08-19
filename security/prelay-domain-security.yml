@@ -1,0 +1,13 @@
+generated: '2026-08-14'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.prelay.com
+  https: false
+domains:
+- domain: prelay.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none

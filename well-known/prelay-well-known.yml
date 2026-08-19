@@ -1,0 +1,164 @@
+generated: '2026-08-14'
+method: probed
+source: live GET of /.well-known/* on every Prelay host resolvable in DNS
+note: >-
+  Recorded absence. No /.well-known/ document was served by any Prelay host. The
+  two marketing hosts (prelay.com, www.prelay.com) still resolve to the Webflow
+  edge (proxy-ssl.webflow.com) but no longer complete a TLS handshake — the
+  certificate has been deprovisioned, so every HTTPS request fails before an HTTP
+  status can be observed and is recorded here as status 0 with the TLS alert. The
+  application host app.prelay.com resolves to ghs.googlehosted.com and answers a
+  Google "Page not found" 404 for every path, i.e. the custom-domain mapping is
+  gone. help.prelay.com resolves to a Google load balancer whose certificate does
+  not cover the name and which answers 403 for every path. NO WellKnown or
+  SecurityTxt pointer is emitted from this file: nothing returned a 200 carrying a
+  real document, and the pointer would assert a surface the provider does not
+  serve.
+hosts:
+- host: www.prelay.com
+  reachable: false
+  transport_error: 'TLS: SSLV3_ALERT_HANDSHAKE_FAILURE'
+  dns: proxy-ssl.webflow.com / proxy-ssl-geo-2.webflow.com
+- host: prelay.com
+  reachable: false
+  transport_error: 'TLS: TLSV1_ALERT_INTERNAL_ERROR'
+  dns: 99.83.190.102, 75.2.70.75
+- host: app.prelay.com
+  reachable: true
+  dns: ghs.googlehosted.com
+  note: Google-hosted catch-all; answers 404 "Page not found" for every path.
+- host: help.prelay.com
+  reachable: true
+  dns: 34.149.167.63
+  note: >-
+    Google load balancer; certificate does not match help.prelay.com and every
+    path answers 403.
+documents:
+- path: /.well-known/security.txt
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/openid-configuration
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/oauth-authorization-server
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/oauth-protected-resource
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/api-catalog
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/ai-plugin.json
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/agent-card.json
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/agent.json
+  host: www.prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/security.txt
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/openid-configuration
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/oauth-authorization-server
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/oauth-protected-resource
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/api-catalog
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/ai-plugin.json
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/agent-card.json
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/agent.json
+  host: prelay.com
+  status: 0
+  error: tls-handshake-failure
+- path: /.well-known/security.txt
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/openid-configuration
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/oauth-protected-resource
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/api-catalog
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/agent-card.json
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/agent.json
+  host: app.prelay.com
+  status: 404
+- path: /.well-known/security.txt
+  host: help.prelay.com
+  status: 403
+- path: /.well-known/openid-configuration
+  host: help.prelay.com
+  status: 403
+- path: /.well-known/oauth-authorization-server
+  host: help.prelay.com
+  status: 403
+- path: /.well-known/oauth-protected-resource
+  host: help.prelay.com
+  status: 403
+- path: /.well-known/api-catalog
+  host: help.prelay.com
+  status: 403
+- path: /.well-known/ai-plugin.json
+  host: help.prelay.com
+  status: 403
+- path: /.well-known/agent-card.json
+  host: help.prelay.com
+  status: 403
+- path: /.well-known/agent.json
+  host: help.prelay.com
+  status: 403
+contract_discovery:
+  note: >-
+    STEP 0b contract discovery run alongside the well-known sweep. Every REST
+    OpenAPI candidate path, /llms.txt and /graphql were probed on all four hosts
+    with the same result — TLS failure on the marketing hosts, blanket 404 on
+    app., blanket 403 on help. No spec, no GraphQL surface, no MCP endpoint and no
+    agent card exist. DNS has no api., docs., developers., developer., portal.,
+    status., auth., id., mcp. or agent. record under prelay.com (all NXDOMAIN).
+  paths_probed:
+  - /openapi.json
+  - /openapi.yaml
+  - /swagger.json
+  - /api-docs
+  - /graphql
+  - /llms.txt
+  result: none
