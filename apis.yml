@@ -38,6 +38,7 @@ description: >-
   reference, OpenAPI/AsyncAPI specification, SDK, MCP server or agent card ever
   existed, and no api./docs./developers. subdomain resolves. Prelay was surfaced as
   a portfolio company of General Catalyst and added to the API Evangelist network.
+x-status: defunct
 url: https://raw.githubusercontent.com/api-evangelist/prelay/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -55,6 +56,7 @@ tags:
 - Deal Collaboration
 - Team Selling
 - Software-as-a-Service
+- Defunct
 tags_raw:
 - Company
 - Sales
@@ -62,6 +64,7 @@ tags_raw:
 - Deal Collaboration
 - Team Selling
 - SaaS
+- Defunct
 common:
 - type: DomainSecurity
   url: security/prelay-domain-security.yml
